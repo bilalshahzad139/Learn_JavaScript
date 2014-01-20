@@ -1,0 +1,117 @@
+<html>
+<head>
+    <title>JS - Objects 3 - Inheritance Practice</title>
+
+    <script type="text/javascript">
+
+        //Function which will be executed on page Load (set on body load), we can consider it as our Main entry point
+        function MainFunction() {
+
+            /*--------------------Objects-------------------------
+               -> In JS, there is no 'class or struct' construct to create a Class
+               -> Object is directly created and properties/functions are added
+               -> Object is like an associative Array
+               -> When a function is called by an object, 'this' keyword in that function refers to caller
+            */
+
+            /* Lets create a class here for a customer, Here 'function' construct is used to create a 
+             class like construct, we'll call such function as 'Employee' here.
+             Constructor in JS is a special function which is called with 'new' keyword, it does three things
+             1- Create an Object in memory
+             2- Call constructor function with newly created object ('this' refers to this object inside function)
+             3- returns 'this' automatically from constructor/function
+            */
+
+            //A JS class with parameterless constructor
+            function Employee(id,name)
+            {
+                this.ID = id;
+                this.Name = name;
+            }//End of constructor function
+
+            //Functions should in prototype property
+            Employee.prototype.GetName = function () {
+                return this.Name;
+            }
+            
+            //In JS, we've prototypal inheritance and for that we use 'prototype' property of the object
+            function Manager(id,name,desig)
+            {
+                /*
+                Here we are doing our inheritance first part. We are calling parent class function with the 
+                context of current object by passing 'this' and required parameters to constructor if any
+                */
+                Employee.call(this, id, name);
+
+                //Create properties related to Manager class
+                this.Designation = desig;
+            }
+
+            //Here we are doing 2nd part of our inheritance, attaching Employee object with Manager prototype
+            Manager.prototype = new Employee();
+
+            //Add functions related to Manager in Manager.prototype
+            Manager.prototype.GetPay = function () {
+                return 1000;
+            }
+
+            WriteLine('var m = new Manager(1, "Bilal", "Dev")');
+            //Create object of Manager
+            var m = new Manager(1, "Bilal", "Dev");//it will create an object with all these three properties
+
+            WriteLine("---------------------------------------------");
+            /*
+            it will search inside 'm' first then in Manager.prototype (which is of Employee instance) then
+            it will search in Employee.prototype
+            */
+            WriteLine('m.GetName() = ' + m.GetName()); 
+            WriteLine('m.ID = ' + m.ID);
+            WriteLine('m.Name = ' + m.Name);
+            WriteLine('m.Designation = ' + m.Designation);
+            WriteLine('m.GetPay() = ' + m.GetPay());
+
+            WriteLine("---------------------------------------------");
+
+
+            //Another way of inheritance is to use Object.create() method
+            //create an object, inheriting from 'm' object
+            WriteLine('var m1 = Object.create(m)');
+            var m1 = Object.create(m);
+
+            WriteLine("---------------------------------------------");
+            /*
+            it will search inside 'm' first then in Manager.prototype (which is of Employee instance) then
+            it will search in Employee.prototype
+            */
+            WriteLine('m1.constructor = ' +m1.constructor);
+            WriteLine('typeof m1 =' + typeof m1);
+            WriteLine('m1 instanceof Manager = ' + (m1 instanceof Manager));
+            WriteLine('m1 instanceof Employee = ' + (m1 instanceof Employee));
+            WriteLine('m1.GetName() = ' + m1.GetName());
+            WriteLine('m1.ID = ' + m1.ID);
+            WriteLine('m1.Name = ' + m1.Name);
+            WriteLine('m1.Designation = ' + m1.Designation);
+            WriteLine('m1.GetPay() = ' + m1.GetPay());
+
+            WriteLine("---------------------------------------------");
+
+
+        }//End of MainFunction
+
+        
+        //A wrapper function to write every new line, this function returns 'undefined'
+        function WriteLine(str) {
+
+            //Write given data using 'document' 'writeln' function
+            document.writeln(str);
+            //Write '</br>' to insert a new line in HTML
+            document.write("</br>");
+        }
+
+    </script>
+</head>
+
+<body onload="return MainFunction()">
+</body>
+
+</html>

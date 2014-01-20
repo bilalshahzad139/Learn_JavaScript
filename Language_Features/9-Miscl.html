@@ -1,0 +1,128 @@
+<html>
+<head>
+    <title>JS - Miscellaneous - Practice</title>
+
+    <script type="text/javascript">
+
+        /*-------------Topics --------------------------
+        -> Closure
+        -> eval function
+        -> Regular Expression
+        
+        ------------------------------------------------*/
+        //Function which will be executed on page Load (set on body load), we can consider it as our Main entry point
+        function MainFunction() {
+
+
+            WriteLine('--------------- closure----------------------');
+
+            //Closure is a very powerful feature of JavaScript
+            //Normally a variable declared inside a function stays as long function is in executing state
+
+            function Test() {
+                var a = 0; //this variable will be created as soon Test will be called and will be destroyed as soon execution of Test will be finished
+                var b = 10;//we are going to use this variable in another anonymous function which will be returned from Test
+
+                return function () {
+                    return b; //so here 'b' variable is closed with this function so 'b' will not be destoryed when execution of Test will be finished
+                }
+            }
+
+            var f = Test(); //f will contain our anonymous function
+
+            //call 'f'
+            var value = f();
+
+            WriteLine('Value = ' + value);
+            WriteLine('-------------------------------------');
+
+            WriteLine('--------------- eval function ----------------------');
+            //eval is a function which executes dynamic javascript code. it takes JS code as string
+
+            var str = "var a=10;"
+            str += " WriteLine('value of a =' + a)";
+
+            WriteLine('Code provided to eval = ' + str);
+
+            //WriteLine(a); //here it will thorw exception because a is not defined
+
+            eval(str);//at this line code in this variable will be executed as it was actual written at this place
+
+            WriteLine('value of a after eval = ' + a);
+            WriteLine('-------------------------------------');
+
+            WriteLine('--------------- Regular Expressions ----------------------');
+
+            //First argument is text to match, second is modifier
+            
+            var str = "Bilal Shahzad Bilal";
+
+            //RegExp constructor function
+
+            //var patt = new RegExp(pattern, modifiers);
+            //g means search all instances, don't stop if first instance found
+            //i means 'case in-sensitive' matching
+            //m means multiline
+            var patt = new RegExp("Bil", "gim");// you can provide one or combinations of modifiers
+            //var patt = new RegExp("Bil", "g");//all instance searching, case-sensitive, not-multiline
+            //var patt = new RegExp("Bil", "im");//first instance searching, case-in-sensitive, multiline
+
+            WriteLine('str = ' + str);
+            WriteLine('patt = ' + patt); //returns string representation of regular expression
+            WriteLine('patt.toString() = ' + patt.toString()); //returns string representation of regular expression
+            WriteLine('patt.source = ' + patt.source); //returns the text to match
+            WriteLine('patt.test(str) = ' + patt.test(str)); //test if any element is found against provided text
+            WriteLine('patt.exec(str) = ' + patt.exec(str));//returns the first match
+            WriteLine('patt.global = '+ patt.global); //whether global modifier set or not
+            WriteLine('patt.multiline = ' + patt.multiline); //whether multiline modifier set or not
+            WriteLine('patt.ignoreCase =' + patt.ignoreCase); //whether ignoreCase modifier set or not
+
+            WriteLine('-------------------------------------');
+            //literal notation to write regular experssion
+
+            var patt1 = /bil/g; //First part is text, other part is modifier
+            var str1 = "Bilal Shahzad Bilal";
+
+            WriteLine('str1 = ' + str1);
+            WriteLine('patt1 = ' + patt1); //returns string representation of regular expression
+            WriteLine('patt1.toString() = ' + patt1.toString()); //returns string representation of regular expression
+            WriteLine('patt1.source = ' + patt1.source); //returns the text to match
+            WriteLine('patt1.test(str) = ' + patt1.test(str1)); //test if any element is found against provided text
+            WriteLine('patt1.exec(str) = ' + patt1.exec(str1));//returns the first match
+            WriteLine('patt1.global = ' + patt1.global); //whether global modifier set or not
+            WriteLine('patt1.multiline = ' + patt1.multiline); //whether multiline modifier set or not
+            WriteLine('patt1.ignoreCase =' + patt1.ignoreCase); //whether ignoreCase modifier set or not
+            WriteLine('-------------------------------------');
+
+            //Regular Expression to check if a string is number or not
+            var reg = new RegExp('^[-]?[0-9]+[\.]?[0-9]+$');
+
+            WriteLine('reg =' + reg);
+
+            WriteLine('reg.test("1234") = ' + reg.test("1234"));
+            WriteLine('reg.test("123ss") = ' + reg.test("123ss"));
+            WriteLine('reg.test("5.32") = ' + reg.test("5.32"));
+            WriteLine('reg.test("5.3.2") = ' + reg.test("5.3.2"));
+
+            WriteLine('-------------------------------------');
+
+
+        }//End of MainFunction
+
+        //A wrapper function to write every new line, this function returns 'undefined'
+        function WriteLine(str) {
+
+            //Write given data using 'document' 'writeln' function
+            document.writeln(str);
+
+            //Write '</br>' to insert a new line in HTML
+            document.write("</br>");
+        }
+
+    </script>
+</head>
+
+<body onload="return MainFunction()">
+</body>
+
+</html>

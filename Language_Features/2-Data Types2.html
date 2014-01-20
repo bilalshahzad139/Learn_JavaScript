@@ -1,0 +1,128 @@
+<html>
+<head>
+    <title>JS - Data Types 2 - Practice</title>
+
+    <script type="text/javascript">
+
+
+        //Function which will be executed on page Load (set on body load), we can consider it as our Main entry point
+        function MainFunction() {
+
+            //JavaScript is loosely typed language, it decides 'Data Type' based on provided data
+            //A variable declared in a function has a scope inside function
+
+            //Base class is 'Object' for every type
+
+            WriteLine('-------------Number--------------------------');
+
+            var str = "23bac";
+
+            WriteLine('str = ' + str);
+
+            WriteLine('parsentInt(str) = ' + parseInt(str)); //Convert a string to integer. It will parse till it finds valid number
+            WriteLine('Number(str) = ' + Number(str));//tries to conver whole string to number, otherwise return NaN
+           
+
+            str = "23.5abc";
+            WriteLine('str = ' + str);
+            WriteLine('parseInt(str) = ' + parseInt(str)); //Convert a string to float. It will parse till it finds valid floating number
+            WriteLine('parseFloat(str) = ' + parseFloat(str)); //Convert a string to float. It will parse till it finds valid floating number
+            WriteLine('Number(str) = ' + Number(str));//tries to conver whole string to number, otherwise return NaN
+            WriteLine('isNaN(str) = ' + isNaN(str)); //checks if provided parameter is 'Not a Number'
+            WriteLine('---------------------------------------');
+            WriteLine('-------------Boolean--------------------------');
+            var b = new Boolean(false);
+            WriteLine('new Boolean(false) = ' + new Boolean(false));//converts false/true to false/true
+            WriteLine('new Boolean(-1) = ' + new Boolean(-1)); //converts any non-zero number to 'true'
+            WriteLine('new Boolean(0) =' + new Boolean(0)); //converts 0 to 'false'
+            WriteLine('new Boolean(5) = ' + new Boolean(5));//converts any non-zero number to 'true'
+            WriteLine('new Boolean("") = ' + new Boolean("")); //converts empty string to 'false'
+            WriteLine('new Boolean("any string") = ' + new Boolean("any string"));//converts non-empty string to 'true'
+            WriteLine('new Boolean(null) = ' + new Boolean(null)); //converts 'null' to false
+            WriteLine('new Boolean(undefined) = ' + new Boolean(undefined)); //converts 'undefined' to false
+            WriteLine('new Boolean({}) =' + new Boolean({})); //converts any object to 'true'
+
+            WriteLine('---------------------------------------');
+
+            WriteLine('-------------String--------------------------');
+            /*------------------String data type ---------------*/
+            //Declare a variable
+            var str = "Hello World"; //string has many functions, 
+            str = new String("Hello World");
+
+            WriteLine('str = ' + str);
+
+            //length returns length of string
+            WriteLine('str.length = ' + str.length);
+
+            //to convert string to Upper Case
+            WriteLine('str.toUpperCase() = ' + str.toUpperCase());
+
+            //to convert string to Lower Case
+            WriteLine('str.toLowerCase() = ' + str.toLowerCase());
+
+            //returns sub string by using start index, end index
+            WriteLine('str.substring(2, 4) = ' + str.substring(2, 4));
+
+            //returns sub string by using start index, length of characters to return
+            WriteLine('str.substr(1, 4) = ' + str.substr(1, 4));
+
+            //returns sub string by using start index, end index
+            //First parameter is starting index. If negative, it is treated as (sourceLength-beginSlice)
+            //End parameter is optional, if not provided, it means all elements from start index, If negative, it is treated as (sourceLength-endSlice)
+            WriteLine('str.slice(2, 4) = ' + str.slice(2, 4));
+            WriteLine('str.slice(-2) = ' + str.slice(-2));
+            WriteLine('str.slice(-2,4) = ' + str.slice(-3,-1));
+            WriteLine("str.indexOf('Wo') = " + str.indexOf('Wo'));//returns index of string
+            WriteLine('---------------------------------------');
+            
+            WriteLine('-------------Array---------------------');
+
+            var arrObj1 = new Array();
+            var arrObj2 = new Array(10); //Array with 10 elements length
+            var arrObj3 = new Array(5, 3, 2);//Array with 3 elements
+            var arrObj4 = [];// Literal notation
+            var arrObj5 = [5,3,2]; //Array Literal notation with 3 elements
+
+            //Array is associative array in its nature in JavaScript
+            arrObj1.push(2); //Add a number, it will be at 0 index/key=0, value=2
+            arrObj1.push('Hello'); //Add a string, index/key=1, value='Hello'
+            arrObj1.push(true); //Add a boolean, index/key=2, value=true
+            arrObj1.push(arrObj3); //Add an array as element into another array, index/key=3, value=5, 3, 2
+            arrObj1['name'] = 'Bilal'; //Add a new element, index/key='name', value='Bilal'
+
+            
+            WriteLine('arrObj1.length = ' + arrObj1.length);//returns count of elements in Array
+            WriteLine('arrObj1.toString() = ' + arrObj1.toString());//Convert elements of array into a string separated by comma
+            WriteLine('arrObj1.join("-") = ' + arrObj1.join("-"));//Convert elements of array into a string separated by provided separator
+            WriteLine('Object.keys(arrObj1) = ' + Object.keys(arrObj1));//it returns keys/index of elements
+            WriteLine('arrObj1[0] = ' + arrObj1[0]);
+            WriteLine('arrObj1.slice(1, 4) = ' + arrObj1.slice(1, 4)); //returns sub set of elements (start index, end index)
+            WriteLine("arrObj1.indexOf('Hello')= " + arrObj1.indexOf('Hello'));//returns index of element in Array
+            WriteLine('arrObj1.splice(1,2) = ' + arrObj1.splice(1, 2));//Start index =1, delete elements from 3rd index, it removes specific elements from array
+            WriteLine('arrObj1.toString() = ' + arrObj1.toString());//Convert elements of array into a string separated by comma
+            WriteLine('arrObj1.reverse() = ' + arrObj1.reverse()); //returns array in reverse order
+            
+
+            WriteLine('---------------------------------------');
+            
+
+        }//End of MainFunction
+
+        //A wrapper function to write every new line, this function returns 'undefined'
+        function WriteLine(str) {
+
+            //Write given data using 'document' 'writeln' function
+            document.writeln(str);
+
+            //Write '</br>' to insert a new line in HTML
+            document.write("</br>");
+        }
+
+    </script>
+</head>
+
+<body onload="return MainFunction()">
+</body>
+
+</html>
