@@ -1,0 +1,129 @@
+<html>
+<head>
+    <title>JS - DOM 2 - Practice</title>
+
+    <script type="text/javascript">
+
+        //Function which will be executed on page Load (set on body load), we can consider it as our Main entry point
+        function MainFunction() {
+
+            //top level object is 'window' which has one important object 'document'
+            //we can access our DOM using 'document' functions & properties
+
+            //Find button by id
+            var btn = document.getElementById('btnSubmit');
+
+            //Bind an event handler for 'click' event
+            btn.onclick = clickHandler;
+            
+            //Find Paragraph by id
+            var para = document.getElementById('para1');
+
+            //check if 'para' is a valid object
+            if (para) {
+                //For Paragraphs, Headings, Spans etc, we use .InnerText property to set content
+                para.innerText = "This is paragraph content added dynamically";
+            }
+
+            //Find div by id
+            var d = document.getElementById('mydiv');
+
+            //Set 'innerHTML'
+            d.innerHTML = "<h1>Hello World, Dynamically added content to div </h1>";
+            //set 'class' attribute to 'mydiv'
+            d.setAttribute("class", "mydiv");
+
+            var cl = d.getAttribute("class");
+            console.log("class on mydiv is: " + cl);
+
+            var mc = document.getElementById('msgcont');
+
+            //Create a span in memory
+            var child = document.createElement("span");
+            //set some inner text
+            child.innerText = 'window.location.host = ' + window.location.host;
+            //append to DOM by apending it in our DIV
+            mc.appendChild(child);
+            
+
+        }//End of MainFunction
+
+
+        //This function will be called when 'btnSubmit' will be clicked
+        function clickHandler(o, e)
+        {
+            //Find first box element by 'id'
+            var t1 = document.getElementById('txtFirst');
+
+            //Read text entered in the textbox
+            var v1 = t1.value;
+
+            //Find an element by 'id' and read its value
+            var v2 = document.getElementById('txtSecond').value;
+
+            //Convert v1 & v2 to 'number' so we can add them
+            var n1 = parseInt(v1);
+            var n2 = parseInt(v2);
+
+            var result = n1 + n2;
+
+            //Check if result is not a number?
+            if (isNaN(result) == true)
+            {
+                alert('Invalid inputs');
+                return false;
+            }
+
+            //Find result box by id
+            var rt = document.getElementById('txtResult');
+            rt.value = result;
+
+            //Above task can be done in one line
+            /*
+            document.getElementById('txtResult').value = result;
+            */
+
+        }
+
+        function showAlert()
+        {
+            alert('hello 2');
+        }
+
+        /*
+        This function is being called by 'hyperlink' it is returning 'false to stop navigation
+        but it will not work if we'll not return this output from hyperlink
+        */
+        function validate()
+        {
+            alert('in validate');
+            return false;
+        }
+    </script>
+</head>
+<body onload="return MainFunction()">
+
+    <div>
+        First: <input id="txtFirst" type="text"/> <br />
+        Second: <input id="txtSecond" type="text"/><br />
+        <input id="btnSubmit" type="submit" value="Add" /><br />
+        Result: <input id="txtResult" type="text"/>
+
+        <br />
+        <input id="btn1" value="Show Alert 1 " type="submit" onclick="alert('hello 1');" />
+        <input id="Submit1" value="Show Alert 2" type="submit" onclick="showAlert();" />
+        <br />
+
+        <a href="test.com" onclick="validate();">Test 1</a>
+        <br />
+        <a href="test.com" onclick="return validate();">Test 2</a>
+    </div>
+    <p id="para1"></p>
+    <div id="mydiv">
+
+    </div>
+    <div id="msgcont">
+
+    </div>
+</body>
+</html>

@@ -106,6 +106,27 @@
 
             WriteLine('-------------------------------------');
 
+            //Use of Math type
+            WriteLine(' Math.ceil(2.351) : ' + Math.ceil(2.351));
+            WriteLine(' Math.floor(2.351) : ' + Math.floor(2.351));
+            WriteLine(' Math.max(5,15,3) : ' + Math.max(5, 15, 3));
+            WriteLine(' Math.min(5,15,3) : ' + Math.min(5, 15, 3));
+            WriteLine(' Math.round(2.35) : ' + Math.round(2.35));
+
+            WriteLine('-------------------------------------');
+
+            var obj = { ID: 1, Name: 'ABC' };
+
+            //convert object into string format
+            var s = JSON.stringify(obj);
+            WriteLine('JSON.stringify(obj) :' + s);
+            
+            //Convert JSON string to JavaScript Object
+            var o = JSON.parse(s);
+            WriteLine('o.ID :' + o.ID);
+
+            WriteLine('-------------------------------------');
+
 
         }//End of MainFunction
 

@@ -1,0 +1,147 @@
+<html>
+<head>
+    <title>JS - DOM 1 - Practice</title>
+
+    <script type="text/javascript">
+
+        /*-------------Introduction--------------------------
+        -> When browser reads HTML, it generates a corresponding objects tree which
+          is called DOM tree. For every HTML element, browser provides JavaScript type
+          For Example: 
+           -> Javascript type against '<html></html>' is 'HTMLHtmlElement'
+           -> Javascript type against '<body></body>' is 'HTMLBodyElement'
+           -> Javascript type against '<div></div>' is 'HTMLDivElement'
+           -> Javascript type against '<img></img>' is 'HTMLImageElement'
+
+        -> Whenever a change is made in page html tree dynamically, DOM tree is also updated
+
+        -> Root level object is 'window' which contains our global container
+        -> 'window' contains many other useful 'objects' and 'functions'
+          For example:
+           -> 'window.document' provides access to currently loaded 'document' means page
+           -> window.document.getElementById() function takes 'id' and returns JavaScript Object against that id
+           -> 'window.confirm()' shows a confirmation box in browser
+           -> 'window.alert()' shows a message in alert box
+        ------------------------------------------------*/
+
+
+        //Function which will be executed on page Load (set on body load), we can consider it as our Main entry point
+        function MainFunction() {
+
+            //When some variable is used and its declaration is not found, it is searched under 'window' object
+
+            console.log('window.constructor :' + window.constructor);
+            console.log('document.constructor :' + document.constructor);
+
+            
+
+            console.log('--------------screen-----------------------');
+            //screen is member of 'window' object i.e. window.screen
+
+            //Returns the height of the screen (excluding the Windows Taskbar)
+            console.log('screen.availHeight :' + screen.availHeight);
+            //Returns the width of the screen (excluding the Windows Taskbar)
+            console.log('screen.availWidth :' + screen.availWidth);
+            //Returns the total width of the screen
+            console.log('screen.width: ' + screen.width);
+            //Returns the total height of the screen
+            console.log('screen.height: ' + screen.height);
+
+            console.log('-----------------------------------------------------');
+
+            //'history' is member of 'window' object i.e. window.history
+
+            /* Loads the previous URL from history
+            window.history.back();
+            //Loads the next URL from history
+            history.forward();
+            //Loads some specific URL from history
+            history.go(-2);
+            */
+
+            console.log('--------------location-----------------------');
+            //'location' is member of 'window' object i.e. window.location
+            
+            console.log('location.host: ' +location.host);
+            console.log('location.hostname: ' + location.hostname);
+            console.log('location.href: ' + location.href);
+            console.log('location.pathname: ' + location.pathname);
+            console.log('location.port: ' + location.port);
+            //location.reload();
+            console.log('-----------------------------------------------------');
+
+            console.log('--------------navigator -----------------------');
+            //'navigator' is member of 'window' object i.e. window.navigator
+            
+            //Returns the code name of the browser
+            console.log('navigator.appCodeName: ' + navigator.appCodeName);
+            //Returns the name of the browser
+            console.log('navigator.appName: ' + navigator.appName);
+            //Returns the version information of the browser
+            console.log('navigator.appVersion: ' + navigator.appVersion);
+            
+            console.log('navigator.appMinorVersion: ' + navigator.appMinorVersion);
+            console.log('navigator.platform: ' + navigator.platform);
+            console.log('navigator.product: ' + navigator.product);
+            console.log('navigator.userAgent: ' + navigator.userAgent);
+            console.log('navigator.cookieEnabled: ' + navigator.cookieEnabled);
+            console.log('navigator.javaEnabled(): ' + navigator.javaEnabled());
+            console.log('-----------------------------------------------------');
+
+
+            //here we are finding an element from 'DOM' by providing its id
+            //As txtName was an input control in html, in 'DOM' there will be 'HTMLInputElement' object against it
+            //Here txt is of type 'HTMLInputElement'
+            var txt = window.document.getElementById('txtName');
+
+            //flag will contain 'true' here as 'txt' is instance of 'HTMLInputElement' type
+            //'HTMLInputElement' is member of 'window' object
+            var flag = (txt instanceof HTMLInputElement);
+            console.log('txt instanceof HTMLInputElement :' + flag);
+
+            //This will show the 'creator' of txt object
+            console.log('txt.constructor:' + txt.constructor);
+
+
+            /* Find button from 'DOM'
+             here 'document' object is not declared in current scope so it will be searched
+             in global scope (in 'window' object)
+            */
+
+            var btn = document.getElementById('btnSubmit');
+
+            //'btn' is instance of 'HTMLInputElement' type
+            //'HTMLInputElement' is member of 'window' object
+            flag = (btn instanceof window.HTMLInputElement);
+            console.log('btn instanceof HTMLInputElement :' + flag);
+
+            flag = (btn instanceof window.HTMLDivElement);
+            console.log('btn instanceof HTMLDivElement :' + flag);
+
+
+            //btn has property 'onclick', here we've provided a function to it.
+            //This function will be called when button will be 'clicked'
+            btn.onclick = function () {
+                alert('button is clicked');
+                
+                //Find textbox from 'DOM' by id
+                var t = document.getElementById('txtName');
+                //Get value from textbox and show in alert
+                alert('Value is:' + t.value);
+
+            };//end of function
+
+
+        }//End of MainFunction
+
+    </script>
+</head>
+<body onload="return MainFunction()">
+    <div>Please Check 'console' for messages</div>
+    <div>
+        <input id="txtName" type="text"/>
+        <input id="btnSubmit" type="submit" />
+    </div>
+
+</body>
+</html>
