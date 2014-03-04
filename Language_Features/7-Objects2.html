@@ -54,7 +54,7 @@
             WriteLine('e.Name = ' + e.Name);
 
             WriteLine('typeof e = ' + (typeof e));//display type of 'e' variable
-            WriteLine('typeof Employee = ' + (typeof Employee));//display type of 'e' variable
+            WriteLine('typeof Employee = ' + (typeof Employee));//display type of 'Employee'
             WriteLine('Employee.name = ' + Employee.name);//The name of the function.
             WriteLine('Employee.caller = ' + Employee.caller);//Specifies the function that invoked the currently executing function.
             WriteLine('Employee.length =' + Employee.length); //Specifies the number of arguments expected by the function.
@@ -110,6 +110,8 @@
             WriteLine('e1.Name =' + e1.Name); //It will search in 'e1' first and it is found so will show value, prototype value will be 'overshadowed'
             WriteLine('e1.Department =' + e1.Department); //It will search in 'e1' first, not found, it will search in prototype
             WriteLine('Employee.Department =' + Employee.Department);//when tried to access a property with function object, it will searches inside first, if not found, then its searches in prototype of its 'constructor's prototype
+            
+
 
             /* toString() function will be searched first inside 'e1' .... Not Found
               then <e1 constructor>.prototype object .... Not Found ---- here <e1 constructor> is 'Employee'

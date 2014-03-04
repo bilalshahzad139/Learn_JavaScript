@@ -20,19 +20,19 @@
              % (remainder)
             */
             var r = a + b;
-            document.writeln('a + b:' + r);
+            WriteLine('a + b:' + r);
 
             r = a - b;
-            document.writeln('a - b:' + r);
+            WriteLine('a - b:' + r);
 
             r = a * b;
-            document.writeln('a * b:' + r);
+            WriteLine('a * b:' + r);
 
             r = a / b;
-            document.writeln('a / b:' + r);
+            WriteLine('a / b:' + r);
 
             r = a % b;
-            document.writeln('a % b:' + r);
+            WriteLine('a % b:' + r);
 
 
             /*Comparisions Operators
@@ -45,18 +45,22 @@
             */
 
             if (a == b) {
-                document.writeln('a is equal to b');
+                WriteLine('a is equal to b');
+            }
+
+            if (a === b) {
+                WriteLine('a is equal to b');
             }
 
             if (a != b) {
-                document.writeln('a is equal to b');
+                WriteLine('a is equal to b');
             }
 
             if (a > b) {
-                document.writeln('a is greater than b');
+                WriteLine('a is greater than b');
             }
             else {
-                document.writeln('a is not greater than b');
+                WriteLine('a is not greater than b');
             }
 
             /* Logical Operators
@@ -66,24 +70,27 @@
             ! (NOT)
 
             */
+            if(obj)
+            {
 
+            }
             if (a >= 90 && a <= 100) {
-                document.writeln('Grade is A+');
+                WriteLine('Grade is A+');
             }
             else if (a >= 80 && a < 90) {
-                document.writeln('Grade is A');
+                WriteLine('Grade is A');
             }
             else if (a >= 70 && a < 80) {
-                document.writeln('Grade is B');
+                WriteLine('Grade is B');
             }
             else if (a >= 60 && a < 70) {
-                document.writeln('Grade is C');
+                WriteLine('Grade is C');
             }
             else if (a >= 50 && a < 60) {
-                document.writeln('Grade is D');
+                WriteLine('Grade is D');
             }
             else {
-                document.writeln('Grade is F');
+                WriteLine('Grade is F');
             }
             
             var name = "test";
@@ -92,22 +99,47 @@
             //String match (use of OR operator)
             if (name == "test1" || name == "test2")
             {
-                document.writeln('matached');
+                WriteLine('matached');
             }
 
             //Boolean match
             if (flag == true) {
-                document.writeln('flag matached');
+                WriteLine('flag matached');
             }
 
             //Convert a string/object to Boolean value
             if (name) //If name is null or "" or undefined, if will evaluate it to false otherwise true
             {
-                document.writeln('valid');
+                WriteLine('valid');
             }
+
+            //Ternary/Conditional operator
+            var result = (flag == true ? "Hello World" : "Else Hello World");
+            WriteLine("Result of Ternary operator : " + result);
+
+
+            //== vs ===
+            //both behaves same, == doesn't apply any 'type' check but === does
+
+            flag = (1 == "1"); 
+            WriteLine('1 == "1" : ' + flag);
+
+            flag = (1 === "1");
+            WriteLine('1 === "1" : ' + flag);
+
 
         }//End of MainFunction
 
+
+        //A wrapper function to write every new line, this function returns 'undefined'
+        function WriteLine(str) {
+
+            //Write given data using 'document' 'writeln' function
+            document.writeln(str);
+
+            //Write '</br>' to insert a new line in HTML
+            document.write("</br>");
+        }
     </script>
 </head>
 

@@ -26,18 +26,28 @@
             document.write("</br>");
         }
 
-        function Sum(a, b)
+        function Sum(a,b)
         {
+            /*Every functions has an implicit variable 'arguments' available
+            This is array alike structure and contains all the agruments passed to this
+            function while calling
+            */
+
             WriteLine('arguments passed to this function are :' + arguments.length);
 
-            //Create a variable and store sum result to it
-            var c = a + b;
-
-            //return result
-            return c;
+            var arg = arguments.length;
+            var result = 0;
+            for (var i = 0; i < arg; i++)
+            {
+                result = result + arguments[i];
+            }
+            
+            return result;
         }
 
-        //In JS, a function can contain another function but inner function can be used inside its containing function
+        //In JS, a function can contain another function 
+        //but inner function can be used inside its containing function
+
         function OuterFunc()
         {
             WriteLine('OuterFunc is called');
@@ -65,12 +75,15 @@
 
             WriteLine('Going to call Sum with one parameter');
             r = Sum(10);//Call Sum function, 'a' will get 10 and 'b' will have 'undefined' as value
+            WriteLine('r:' + r);
 
             WriteLine('Going to call Sum with two parameter');
             r = Sum(10, 20)//Call Sum function, 'a' will get 10 and 'b' will get 20 as value
+            WriteLine('r:' + r);
 
             WriteLine('Going to call Sum with three parameter');
             r = Sum(10, 20, 30)//Call Sum function, 'a' will get 10 and 'b' will  get 20 as value, 30 will be ignored
+            WriteLine('r:' + r);
 
             r = OuterFunc();//here r will contain 'undefined' as OuterFunc does not return anything
 
@@ -117,7 +130,7 @@
                -> Every 'function' is an object of type 'Function'. We can create function direclty by using 'Function' type
                -> Last argument of 'Function' constructor takes body of function as string and all others are parameters
             */
-
+            
             //Create a function which takes two arguments and returns some of those
             var func = new Function("a", "b", " var c = a+b; return c;");
             WriteLine("-----------func ----------------");
@@ -151,6 +164,7 @@
 
         function ExecuteFunction(f)
         {
+            
             //check if f is of type 'function'
             if (typeof f == 'function') 
             {

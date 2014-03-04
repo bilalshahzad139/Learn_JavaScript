@@ -19,6 +19,8 @@
 
             WriteLine('str = ' + str);
 
+            WriteLine('parsentInt(str) 11= ' + parseInt("Abc"));
+
             WriteLine('parsentInt(str) = ' + parseInt(str)); //Convert a string to integer. It will parse till it finds valid number
             WriteLine('Number(str) = ' + Number(str));//tries to conver whole string to number, otherwise return NaN
            
@@ -61,7 +63,9 @@
             //to convert string to Lower Case
             WriteLine('str.toLowerCase() = ' + str.toLowerCase());
 
-            //returns sub string by using start index, end index
+            //returns sub string by using start index, end index, not including "end" itself.
+            //If "start" is greater than "end", this method will swap the two arguments
+            //If either "start" or "stop" is less than 0, it is treated as if it were 0.
             WriteLine('str.substring(2, 4) = ' + str.substring(2, 4));
 
             //returns sub string by using start index, length of characters to return
@@ -90,9 +94,9 @@
             arrObj1.push(true); //Add a boolean, index/key=2, value=true
             arrObj1.push(arrObj3); //Add an array as element into another array, index/key=3, value=5, 3, 2
             arrObj1['name'] = 'Bilal'; //Add a new element, index/key='name', value='Bilal'
-
             
-            WriteLine('arrObj1.length = ' + arrObj1.length);//returns count of elements in Array
+            //length, toString(), join doesn't consider elements added against 'keys'
+            WriteLine('arrObj1.length = ' + arrObj1.length);//returns count of elements in Array where are not added by 'key/value' pair
             WriteLine('arrObj1.toString() = ' + arrObj1.toString());//Convert elements of array into a string separated by comma
             WriteLine('arrObj1.join("-") = ' + arrObj1.join("-"));//Convert elements of array into a string separated by provided separator
             WriteLine('Object.keys(arrObj1) = ' + Object.keys(arrObj1));//it returns keys/index of elements
@@ -103,6 +107,26 @@
             WriteLine('arrObj1.toString() = ' + arrObj1.toString());//Convert elements of array into a string separated by comma
             WriteLine('arrObj1.reverse() = ' + arrObj1.reverse()); //returns array in reverse order
             
+
+            var fruits = [];
+            fruits.push("banana", "apple", "peach");
+
+            WriteLine('fruits.length: ' + fruits.length); // 3
+            fruits[5] = "mango";
+            WriteLine('fruits[5]: ' + fruits[5]); // "mango"
+            WriteLine('Object.keys(fruits): ' + Object.keys(fruits));  // ["0", "1", "2", "5"]
+            WriteLine('fruits.length: ' + fruits.length); // 6
+            WriteLine('fruits.toString():' + fruits.toString());
+
+            //Increasing the length property does not create additional elements.
+            fruits.length = 10;
+
+            //Decreasing the length property does, however, delete elements.
+            fruits.length = 2;
+
+            WriteLine('Object.keys(fruits): ' + Object.keys(fruits)); // ["0", "1"]
+            WriteLine('fruits.length: ' + fruits.length); // 2
+            WriteLine('fruits.toString():' + fruits.toString());
 
             WriteLine('---------------------------------------');
             

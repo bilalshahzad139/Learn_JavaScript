@@ -54,7 +54,7 @@
             WriteLine('------------------- oo --------------------------');
             WriteLine('oo.ID = ' + oo.ID); //Show value of 'ID' property of 'oo' object
             WriteLine('oo["Name"] = ' + oo["Name"]); //Show value of 'Name' property of 'oo' object
-            WriteLine('oo.Address = ' + oo.Address); //Show value of 'Name' property of 'oo' object
+            WriteLine('oo.Address = ' + oo.Address); //Show value of 'Address' property of 'oo' object
            // WriteLine('oo.Show() = ' + oo.Show()); //Call 'Show' function and show return value
             WriteLine('oo.Get1() = ' + oo.Get1()); //Call 'Get1' function and show return valuee
 
@@ -123,7 +123,7 @@
 
 
             WriteLine("-------------------------DisplayObject Start------------------");
-            if (typeof obj.ID != 'undefined') //It means ID property exists in obj
+            if (obj.ID != 'undefined') //It means ID property exists in obj
             {
                 WriteLine('DisplayObject: ID is :' + obj.ID);
                 WriteLine('DisplayObject: ID is :' + obj['ID']);//As object is like associative array, members can be accessed like array elements
